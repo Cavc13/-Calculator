@@ -8,7 +8,7 @@ public class Calc {
 
         Scanner reader = new Scanner(System.in);
 
-        String[] numbers = reader.nextLine().split(" ");
+        String[] numbers = reader.nextLine().trim().split(" ");
 
         try {
             char firstNumber = numbers[0].charAt(0);
@@ -17,13 +17,15 @@ public class Calc {
 
             if (Character.isDigit(firstNumber) & Character.isDigit(secondNumber)) {
 
-                int e = Arab.ArabicCalc(numbers[0], numbers[2], symbol);
+                int result = Arab.ArabicCalc(numbers[0], numbers[2], symbol);
 
-                if (e != -1313)
-                    System.out.println("Результат = " + e);
-                else
-                    System.out.println("Ошибка! Прочтите внимательнее условия ввода");
-
+                if (result == Arab.UNKNOWN_SYMBOL) {
+                    System.out.println("Неизвестнный математический символ. Введите один из это списка: + - * / ");
+                } else if (result == Arab.INCORRECT_NUMBER) {
+                    System.out.println("Некоректные цифры! Прочтите внимательнее условия ввода");
+                } else {
+                    System.out.println("Результат = " + result);
+                }
             } else {
                 System.out.println("Результат = " + Rome.RomanCalc(numbers[0], numbers[2], symbol));
             }

@@ -10,11 +10,14 @@ public class Arab {
                 case '-' -> firstNumber - secondNumber;
                 case '*' -> firstNumber * secondNumber;
                 case '/' -> firstNumber / secondNumber;
-                default -> -1313;
+                default -> UNKNOWN_SYMBOL;
             };
         } else {
-            return -1313;
+            return INCORRECT_NUMBER;
         }
     }
+
+    public static int UNKNOWN_SYMBOL = -4815;
+    public static int INCORRECT_NUMBER = -1623;
 }
 
